@@ -2,6 +2,14 @@
 #include <stdint.h>
 
 
+void va_print_test(const char *comment, const char *fmt, ...)
+{
+    va_list ap;
+    va_start(ap, fmt);
+    trace_vlog(LOG_DEBUG, comment, fmt, ap);
+    va_end(ap);
+}
+
 int main(void)
 {
 
@@ -35,6 +43,8 @@ int main(void)
 
     trace_log_assert(sizeof(buf) == sizeof(bufl), LOG_CRITICAL, "this shouldn't happen!");
     trace_log_assert(trace_log_getlevel() == LOG_DEBUG, LOG_CRITICAL, "that's fine just for test (should be not printed).");
+
+    va_print_test("va_print", "{%s}{%d}", "test", 157);
 
     return 0;
 }
