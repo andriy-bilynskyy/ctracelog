@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project(libctrace_project)
+add_library(ctrace STATIC trace_log.c)
+target_include_directories(ctrace INTERFACE ./)
+install(TARGETS ctrace DESTINATION lib)
+install(FILES trace_log.h DESTINATION include)

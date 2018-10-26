@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project(trace-sample)
+add_subdirectory(src/)
+add_executable(trace-sample examples/main.c)
+target_link_libraries(trace-sample ctrace)
